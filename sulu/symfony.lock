@@ -305,6 +305,18 @@
     "ramsey/uuid": {
         "version": "4.1.1"
     },
+    "sulu/headless-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "dd9c3df5ffdd13e502b87b870bed290b0ba65478"
+        },
+        "files": [
+            "config/routes/sulu_headless_website.yaml"
+        ]
+    },
     "sulu/sulu": {
         "version": "2.2.7"
     },
