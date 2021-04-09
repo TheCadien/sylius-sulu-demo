@@ -1,0 +1,10 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.5
+    ports:
+      - ${DOCKER_MYSQL_PORT:-3306}:3306
+    volumes:
+      - ./var/data/mysql:/var/lib/mysql:cached
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
