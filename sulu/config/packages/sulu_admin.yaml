@@ -6,3 +6,8 @@ sulu_admin:
     lists:
         directories:
             - "%kernel.project_dir%/config/lists"
+    resources:
+        products:
+            routes:
+                list: app.get_products
+                detail: app.get_product
