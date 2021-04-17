@@ -49,14 +49,8 @@ class ProductAdmin extends Admin
     {
         $module = new NavigationItem('app.products');
         $module->setPosition(40);
-        $module->setIcon('fa-calendar');
-
-        // Configure a NavigationItem with a View
-        $products = new NavigationItem('app.products');
-        $products->setPosition(10);
-        $products->setView(static::PRODUCT_LIST_VIEW);
-
-        $module->addChild($products);
+        $module->setIcon('fa-dollar');
+        $module->setView(static::PRODUCT_LIST_VIEW);
 
         $navigationItemCollection->add($module);
     }
