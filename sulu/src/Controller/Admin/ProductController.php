@@ -84,7 +84,7 @@ class ProductController extends AbstractRestController implements ClassResourceI
 
     public function getAction(int $id, Request $request): Response
     {
-        $entity = $this->productRepository->findBy(['id' => $id]);
+        $entity = $this->productRepository->findOneBy(['id' => $id]);
         if (!$entity) {
             throw new NotFoundHttpException();
         }
@@ -95,7 +95,7 @@ class ProductController extends AbstractRestController implements ClassResourceI
     public function putAction(int $id, Request $request): Response
     {
         /** @var Product $entity */
-        $entity = $this->productRepository->findBy(['id' => $id]);
+        $entity = $this->productRepository->findOneBy(['id' => $id]);
         if (!$entity) {
             throw new NotFoundHttpException();
         }
