@@ -1708,16 +1708,16 @@
         },
         {
             "name": "doctrine/phpcr-bundle",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrinePHPCRBundle.git",
-                "reference": "f4a6bf885b48963aa91654fd3360ec6a070a8617"
+                "reference": "b8656dbc961844b241661897dd54304ba1a2b78f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrinePHPCRBundle/zipball/f4a6bf885b48963aa91654fd3360ec6a070a8617",
-                "reference": "f4a6bf885b48963aa91654fd3360ec6a070a8617",
+                "url": "https://api.github.com/repos/doctrine/DoctrinePHPCRBundle/zipball/b8656dbc961844b241661897dd54304ba1a2b78f",
+                "reference": "b8656dbc961844b241661897dd54304ba1a2b78f",
                 "shasum": ""
             },
             "require": {
@@ -1798,9 +1798,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrinePHPCRBundle/issues",
-                "source": "https://github.com/doctrine/DoctrinePHPCRBundle/tree/2.2.1"
+                "source": "https://github.com/doctrine/DoctrinePHPCRBundle/tree/2.2.2"
             },
-            "time": "2021-02-17T06:53:27+00:00"
+            "time": "2021-04-13T14:02:58+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -2806,16 +2806,16 @@
         },
         {
             "name": "jackalope/jackalope-doctrine-dbal",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jackalope/jackalope-doctrine-dbal.git",
-                "reference": "7c126e4715c0cb2b05ffab0755bccab91b2f1b61"
+                "reference": "7002f5764fb4e659529db2bb8b01efe64d4f3ff3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jackalope/jackalope-doctrine-dbal/zipball/7c126e4715c0cb2b05ffab0755bccab91b2f1b61",
-                "reference": "7c126e4715c0cb2b05ffab0755bccab91b2f1b61",
+                "url": "https://api.github.com/repos/jackalope/jackalope-doctrine-dbal/zipball/7002f5764fb4e659529db2bb8b01efe64d4f3ff3",
+                "reference": "7002f5764fb4e659529db2bb8b01efe64d4f3ff3",
                 "shasum": ""
             },
             "require": {
@@ -2871,9 +2871,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jackalope/jackalope-doctrine-dbal/issues",
-                "source": "https://github.com/jackalope/jackalope-doctrine-dbal/tree/1.6.0"
+                "source": "https://github.com/jackalope/jackalope-doctrine-dbal/tree/1.6.1"
             },
-            "time": "2020-12-08T11:08:24+00:00"
+            "time": "2021-04-13T14:00:09+00:00"
         },
         {
             "name": "jms/metadata",
@@ -3120,16 +3120,16 @@
         },
         {
             "name": "laminas/laminas-code",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-code.git",
-                "reference": "5b553c274b94af3f880cbaaf8fbab047f279a31c"
+                "reference": "e7e8f8a9c267520051d8026ff1da74823a3d8b97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/5b553c274b94af3f880cbaaf8fbab047f279a31c",
-                "reference": "5b553c274b94af3f880cbaaf8fbab047f279a31c",
+                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/e7e8f8a9c267520051d8026ff1da74823a3d8b97",
+                "reference": "e7e8f8a9c267520051d8026ff1da74823a3d8b97",
                 "shasum": ""
             },
             "require": {
@@ -3187,7 +3187,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-03-27T13:55:31+00:00"
+            "time": "2021-04-14T22:05:06+00:00"
         },
         {
             "name": "laminas/laminas-eventmanager",
@@ -4548,16 +4548,16 @@
         },
         {
             "name": "phpcr/phpcr-utils",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpcr/phpcr-utils.git",
-                "reference": "3be690cb40a30f702c5f9f475f1cd97af0641970"
+                "reference": "aba3bd1caae3279e2ec82149490c2fcda89d557c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpcr/phpcr-utils/zipball/3be690cb40a30f702c5f9f475f1cd97af0641970",
-                "reference": "3be690cb40a30f702c5f9f475f1cd97af0641970",
+                "url": "https://api.github.com/repos/phpcr/phpcr-utils/zipball/aba3bd1caae3279e2ec82149490c2fcda89d557c",
+                "reference": "aba3bd1caae3279e2ec82149490c2fcda89d557c",
                 "shasum": ""
             },
             "require": {
@@ -4621,9 +4621,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpcr/phpcr-utils/issues",
-                "source": "https://github.com/phpcr/phpcr-utils/tree/1.5.1"
+                "source": "https://github.com/phpcr/phpcr-utils/tree/1.5.2"
             },
-            "time": "2020-10-08T11:48:18+00:00"
+            "time": "2021-04-13T06:21:33+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",

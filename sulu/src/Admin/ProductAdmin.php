@@ -39,7 +39,8 @@ class ProductAdmin extends Admin
     public function __construct(
         ViewBuilderFactoryInterface $viewBuilderFactory,
         WebspaceManagerInterface $webspaceManager
-    ) {
+    )
+    {
         $this->viewBuilderFactory = $viewBuilderFactory;
         $this->webspaceManager = $webspaceManager;
     }
@@ -95,28 +96,18 @@ class ProductAdmin extends Admin
         $viewCollection->add($addDetailsFormView);
 
         // Configure Product Edit View
-        $editFormView = $this->viewBuilderFactory->createResourceTabViewBuilder(static::PRODUCT_EDIT_FORM_VIEW, '/products/:locale/:id')
+        $editFormView = $this->viewBuilderFactory->createResourceTabViewBuilder(self::PRODUCT_EDIT_FORM_VIEW, '/products/:locale/:id')
             ->setResourceKey(Product::RESOURCE_KEY)
             ->setBackView(static::PRODUCT_LIST_VIEW)
             ->setTitleProperty('title')
             ->addLocales($locales);
         $viewCollection->add($editFormView);
 
-        $formToolbarActions = [
-            new ToolbarAction('sulu_admin.save'),
-            new ToolbarAction('sulu_admin.delete'),
-            new TogglerToolbarAction(
-                'app.enable_product',
-                'enabled',
-                'enable',
-                'disable'
-            ),
-        ];
-        $editDetailsFormView = $this->viewBuilderFactory->createFormViewBuilder(static::PRODUCT_EDIT_FORM_VIEW . '.details', '/details')
+        $editDetailsFormView = $this->viewBuilderFactory->createFormViewBuilder(self::PRODUCT_EDIT_FORM_VIEW . '.details', '/details')
             ->setResourceKey(Product::RESOURCE_KEY)
             ->setFormKey(self::PRODUCT_FORM_KEY)
             ->setTabTitle('sulu_admin.details')
-            ->addToolbarActions($formToolbarActions)
+            ->addToolbarActions([new ToolbarAction('sulu_admin.save'), new ToolbarAction('sulu_admin.delete')])
             ->setParent(static::PRODUCT_EDIT_FORM_VIEW);
         $viewCollection->add($editDetailsFormView);
     }
