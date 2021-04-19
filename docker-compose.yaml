@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+    mysql:
+        image: mysql:8.0.19
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+        ports:
+            - 3306:3306
