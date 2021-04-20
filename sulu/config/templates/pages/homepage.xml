@@ -36,10 +36,10 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="article" type="text_editor">
+        <property name="products" type="product_selection">
             <meta>
-                <title lang="en">Article</title>
-                <title lang="de">Artikel</title>
+                <title lang="en">Products</title>
+                <title lang="de">Produkte</title>
             </meta>
         </property>
     </properties>
