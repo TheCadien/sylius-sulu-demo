@@ -8,6 +8,8 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
+    const LOCALE = 'en';
+
     public function load(ObjectManager $manager)
     {
         $suluBookProduct = new Product();
