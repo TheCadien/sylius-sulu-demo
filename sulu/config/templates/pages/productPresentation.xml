@@ -3,15 +3,15 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-    <key>default</key>
+    <key>productPresentation</key>
 
     <view>pages/default</view>
     <controller>Sulu\Bundle\HeadlessBundle\Controller\HeadlessWebsiteController::indexAction</controller>
     <cacheLifetime>604800</cacheLifetime>
 
     <meta>
-        <title lang="en">Default</title>
-        <title lang="de">Standard</title>
+        <title lang="en">Product presentation</title>
+        <title lang="de">Produkt Präsentation</title>
     </meta>
 
     <properties>
@@ -36,10 +36,24 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="content" type="text_editor">
+        <property name="image" type="single_media_selection">
             <meta>
-                <title lang="en">Content</title>
-                <title lang="de">Content</title>
+                <title lang="en">Image</title>
+                <title lang="de">Bild</title>
+            </meta>
+        </property>
+
+        <property name="text" type="text_editor">
+            <meta>
+                <title lang="en">Text</title>
+                <title lang="de">Text</title>
+            </meta>
+        </property>
+
+        <property name="product" type="product_selection">
+            <meta>
+                <title lang="en">Product</title>
+                <title lang="de">Produkt</title>
             </meta>
         </property>
     </properties>
