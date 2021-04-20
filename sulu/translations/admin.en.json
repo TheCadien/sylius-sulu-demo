@@ -1,4 +1,5 @@
 {
   "app.products": "Products",
-  "app.price": "Price"
+  "app.price": "Price",
+  "app.code": "Code"
 }

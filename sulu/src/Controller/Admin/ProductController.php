@@ -127,11 +127,10 @@ class ProductController extends AbstractRestController implements ClassResourceI
 
     public function mapDataToEntity(array $data, Product $product): Product
     {
+        $product->setCode($data['code']);
         $product->setName($data['name']);
         $product->setPrice($data['price']);
 
         return $product;
     }
-
-
 }
