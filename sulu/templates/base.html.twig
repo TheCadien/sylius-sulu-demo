@@ -20,42 +20,36 @@
 <body>
     <header>
         {% block header %}
-            <nav>
-                <ul>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ sulu_content_root_path() }}">Homepage</a>
+                </li>
+                {% for item in sulu_navigation_root_tree('main') %}
                     <li>
-                        <a href="{{ sulu_content_root_path() }}">Homepage</a>
+                        <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+                           title="{{ item.title }}">{{ item.title }}</a>
                     </li>
-
-                    {% for item in sulu_navigation_root_tree('main') %}
-                        <li>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
+                {% endfor %}
+            </ul>
+        </nav>
         {% endblock %}
     </header>
 
-    <form action="{{ path('sulu_search.website_search') }}" method="GET">
-        <input name="q" type="text" placeholder="Search"/>
-        <input type="submit" value="Go"/>
-    </form>
+    <div id="content">
+        {% block content %}
+            {# define container element for rendering single page application #}
+            <div id="sulu-headless-container"></div>
 
-    <section id="content">
-        {% block content %}{% endblock %}
-    </section>
-
-    <aside>
-        {% block aside %}{% endblock %}
-    </aside>
-
-    <footer>
-        {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+            {# initialize application with json data of current page to prevent second request on first load #}
+            <script>window.SULU_HEADLESS_VIEW_DATA = {{ headless|json_encode|raw }};</script>
+            <script>window.SULU_HEADLESS_API_ENDPOINT = '{{ sulu_content_path('/api') }}';</script>
         {% endblock %}
-    </footer>
+    </div>
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        {# start single page application by including built javascript code #}
+        <script src="/build/headless/js/index.js"></script>
+    {% endblock %}
 </body>
 </html>

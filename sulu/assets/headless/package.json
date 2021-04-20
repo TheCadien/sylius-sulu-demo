@@ -1,0 +1,32 @@
+{
+  "name": "my-frontend-application",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack src/index.js -o ../../public/build/headless/js/index.js --module-bind js=babel-loader -p --display-modules --sort-modules-by size",
+    "watch": "webpack src/index.js -w -o ../../public/build/headless/js/index.js  --module-bind js=babel-loader --mode=development --devtool source-map"
+  },
+  "dependencies": {
+    "sulu-headless-bundle": "file:../../vendor/sulu/headless-bundle/Resources/js-website",
+    "core-js": "^3.0.0",
+    "loglevel": "^1.0.0",
+    "mobx": "^4.0.0",
+    "mobx-react": "^5.0.0",
+    "prop-types": "^15.7.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "whatwg-fetch": "^3.0.0",
+    "history": "^4.10.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  }
+}
