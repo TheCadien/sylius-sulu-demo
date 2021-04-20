@@ -20,6 +20,11 @@ class Product
     private $id;
 
     /**
+     * @ORM\Column(type="string", nullable=true, unique=true)
+     */
+    private $code;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $price;
@@ -32,6 +37,18 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
     }
 
     public function getPrice(): ?int

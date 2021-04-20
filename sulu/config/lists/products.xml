@@ -8,6 +8,11 @@
             <entity-name>App\Entity\Product</entity-name>
         </property>
 
+        <property name="code" visibility="always" searchability="yes" translation="app.code">
+            <field-name>code</field-name>
+            <entity-name>App\Entity\Product</entity-name>
+        </property>
+
         <property name="name" visibility="always" searchability="yes" translation="sulu_admin.name">
             <field-name>name</field-name>
             <entity-name>App\Entity\Product</entity-name>

@@ -6,9 +6,18 @@
     <key>product_details</key>
 
     <properties>
-        <property name="name" type="text_line" mandatory="true" colspan="12">
+        <property name="name" type="text_line" mandatory="true" colspan="9">
             <meta>
                 <title>sulu_admin.name</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+        </property>
+
+        <property name="code" type="text_line" mandatory="true" disabledCondition="!!id" colspan="3">
+            <meta>
+                <title>app.code</title>
             </meta>
             <params>
                 <param name="headline" value="true"/>
