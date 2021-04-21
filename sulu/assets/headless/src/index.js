@@ -3,10 +3,17 @@ import interceptAnchorClick from 'sulu-headless-bundle/src/utils/interceptAnchor
 import viewRegistry from 'sulu-headless-bundle/src/registries/viewRegistry';
 import HomepageTemplatePage from './views/HomepageTemplatePage';
 import DefaultTemplatePage from './views/DefaultTemplatePage';
+import ProductPresentationTemplatePage from './views/ProductPresentationTemplatePage';
+
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css';
 
 // register views for rendering page templates
 viewRegistry.add('page', 'homepage', HomepageTemplatePage);
 viewRegistry.add('page', 'default', DefaultTemplatePage);
+viewRegistry.add('page', 'productPresentation', ProductPresentationTemplatePage);
 
 // register views for rendering article templates
 // viewRegistry.add('article', 'headless-template', HeadlessTemplateArticle);

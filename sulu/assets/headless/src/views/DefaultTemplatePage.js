@@ -7,7 +7,7 @@ class DefaultTemplatePage extends React.Component {
         const {
             content: {
                 title,
-                article,
+                content,
             },
         } = this.props.data;
 
@@ -15,7 +15,7 @@ class DefaultTemplatePage extends React.Component {
             <>
                 <h1>{title}</h1>
 
-                <p>{article}</p>
+                <div dangerouslySetInnerHTML={{__html: content}}/>
             </>
         );
     }
