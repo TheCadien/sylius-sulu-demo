@@ -15,37 +15,84 @@
         } %}
     {% endblock %}
 
-    {% block style %}{% endblock %}
+    {% block style %}
+        <link href="/build/headless/js/main.css" rel="stylesheet">
+    {% endblock %}
 </head>
 <body>
-    <header>
-        {% block header %}
-        <nav>
-            <ul>
-                <li>
-                    <a href="{{ sulu_content_root_path() }}">Homepage</a>
-                </li>
-                {% for item in sulu_navigation_root_tree('main') %}
-                    <li>
-                        <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+    {% block header %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ sulu_content_root_path() }}">PHPUGMRN</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ sulu_content_root_path() }}">Homepage</a>
+                        </li>
+                        {% for item in sulu_navigation_root_tree('main', 2) %}
+                            {% if item.children|length == 0 %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+                                       title="{{ item.title }}">{{ item.title }}</a>
+                                </li>
+                            {% else %}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">{{ item.title }} <span
+                                                class="caret"></span></a>
+
+                                    <ul class="dropdown-menu">
+                                        {% for child in item.children %}
+                                            <li>
+                                                <a href="{{ sulu_content_path(child.url, child.webspaceKey) }}">
+                                                    {{ child.title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    <div class="container content">
+        <div class="row">
+            <div class="col-lg-12" id="content">
+                {% block content %}
+                    {# define container element for rendering single page application #}
+                    <div id="sulu-headless-container"></div>
+
+                    {# initialize application with json data of current page to prevent second request on first load #}
+                    <script>window.SULU_HEADLESS_VIEW_DATA = {{ headless|json_encode|raw }};</script>
+                    <script>window.SULU_HEADLESS_API_ENDPOINT = '{{ sulu_content_path('/api') }}';</script>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <nav class="container navbar-expand-lg">
+            <ul class="navbar-nav ml-auto">
+                {% for item in sulu_navigation_root_tree('footer') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
                            title="{{ item.title }}">{{ item.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
         </nav>
-        {% endblock %}
-    </header>
 
-    <div id="content">
-        {% block content %}
-            {# define container element for rendering single page application #}
-            <div id="sulu-headless-container"></div>
-
-            {# initialize application with json data of current page to prevent second request on first load #}
-            <script>window.SULU_HEADLESS_VIEW_DATA = {{ headless|json_encode|raw }};</script>
-            <script>window.SULU_HEADLESS_API_ENDPOINT = '{{ sulu_content_path('/api') }}';</script>
-        {% endblock %}
-    </div>
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; PHPUGMRN {{ 'now'|date('Y') }}</p>
+        </div>
+    </footer>
 
     {% block javascripts %}
         {# start single page application by including built javascript code #}

@@ -7,16 +7,19 @@
     "watch": "webpack src/index.js -w -o ../../public/build/headless/js/index.js  --module-bind js=babel-loader --mode=development --devtool source-map"
   },
   "dependencies": {
-    "sulu-headless-bundle": "file:../../vendor/sulu/headless-bundle/Resources/js-website",
+    "bootstrap": "^4.6.0",
     "core-js": "^3.0.0",
+    "history": "^4.10.1",
+    "jquery": "^3.6.0",
     "loglevel": "^1.0.0",
     "mobx": "^4.0.0",
     "mobx-react": "^5.0.0",
     "prop-types": "^15.7.0",
     "react": "^16.8.0",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^16.8.0",
-    "whatwg-fetch": "^3.0.0",
-    "history": "^4.10.1"
+    "sulu-headless-bundle": "file:../../vendor/sulu/headless-bundle/Resources/js-website",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -26,6 +29,9 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "css-loader": "^5.2.4",
+    "mini-css-extract-plugin": "^1.5.0",
+    "style-loader": "^2.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
   }

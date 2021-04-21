@@ -1,13 +1,14 @@
 <?php
 
-
 namespace App\DataFixtures\Document;
-
 
 use App\DataFixtures\AppFixtures;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use RuntimeException;
 use Sulu\Bundle\DocumentManagerBundle\DataFixtures\DocumentFixtureInterface;
+use Sulu\Bundle\MediaBundle\Entity\Media;
 use Sulu\Bundle\PageBundle\Document\HomeDocument;
 use Sulu\Bundle\PageBundle\Document\PageDocument;
 use Sulu\Component\Content\Document\RedirectType;
@@ -17,7 +18,6 @@ use Sulu\Component\PHPCR\PathCleanupInterface;
 
 class DocumentFixture implements DocumentFixtureInterface
 {
-
     /**
      * @var PathCleanupInterface
      */
@@ -34,6 +34,11 @@ class DocumentFixture implements DocumentFixtureInterface
         $this->entityManager = $entityManager;
     }
 
+    public function getOrder()
+    {
+        return 10;
+    }
+
     public function load(DocumentManager $documentManager): void
     {
         $this->loadPages($documentManager);
@@ -42,11 +47,11 @@ class DocumentFixture implements DocumentFixtureInterface
         $documentManager->flush();
     }
 
-    private function loadPages(DocumentManager $documentManager): void
+    private function loadPages(DocumentManager $documentManager): array
     {
         $pageDataList = [
             [
-                'title' => 'books',
+                'title' => 'Books',
                 'navigationContexts' => ['main'],
                 'structureType' => 'default',
             ],
@@ -67,7 +72,8 @@ class DocumentFixture implements DocumentFixtureInterface
                 'navigationContexts' => ['main'],
                 'structureType' => 'productPresentation',
                 'text' => 'The best book in the world!',
-                'product' => [1],
+                'products' => [1],
+                'image' => ['id' => $this->getMediaId('Camera.jpg')],
                 'parent_path' => '/cmf/example/contents/books'
             ],
             [
@@ -75,7 +81,8 @@ class DocumentFixture implements DocumentFixtureInterface
                 'navigationContexts' => ['main'],
                 'structureType' => 'productPresentation',
                 'text' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore',
-                'product' => [2],
+                'products' => [2],
+                'image' => ['id' => $this->getMediaId('Headphones.jpg')],
                 'parent_path' => '/cmf/example/contents/books'
             ],
             [
@@ -83,16 +90,18 @@ class DocumentFixture implements DocumentFixtureInterface
                 'navigationContexts' => ['main'],
                 'structureType' => 'productPresentation',
                 'text' => 'Fucking Holy!',
-                'product' => [3],
+                'products' => [3],
+                'image' => ['id' => $this->getMediaId('Shoe.jpg')],
                 'parent_path' => '/cmf/example/contents/books'
             ]
         ];
 
         $pages = [];
-
         foreach ($pageDataList as $pageData) {
             $pages[$pageData['title']] = $this->createPage($documentManager, $pageData);
         }
+
+        return $pages;
     }
 
     private function loadHomepage(DocumentManager $documentManager): void
@@ -107,6 +116,13 @@ class DocumentFixture implements DocumentFixtureInterface
                 'url' => '/',
                 'text' => 'Welcome to our Book Shop',
                 'products' => [1, 2, 3],
+                'headerImages' => [
+                    'ids' => [
+                        $this->getMediaId('Camera.jpg'),
+                        $this->getMediaId('Headphones.jpg'),
+                        $this->getMediaId('Shoe.jpg'),
+                    ],
+                ],
             ]
         );
 
@@ -114,14 +130,6 @@ class DocumentFixture implements DocumentFixtureInterface
         $documentManager->publish($homeDocument, AppFixtures::LOCALE);
     }
 
-    public function getOrder()
-    {
-        return 10;
-    }
-
-    /**
-     * @param mixed[] $data
-     */
     private function createPage(DocumentManager $documentManager, array $data): PageDocument
     {
         if (!isset($data['url'])) {
@@ -187,5 +195,25 @@ class DocumentFixture implements DocumentFixtureInterface
         $documentManager->publish($pageDocument, AppFixtures::LOCALE);
 
         return $pageDocument;
+    }
+
+    private function getMediaId(string $name): int
+    {
+        try {
+            $id = $this->entityManager->createQueryBuilder()
+                ->from(Media::class, 'media')
+                ->select('media.id')
+                ->innerJoin('media.files', 'file')
+                ->innerJoin('file.fileVersions', 'fileVersion')
+                ->where('fileVersion.name = :name')
+                ->setMaxResults(1)
+                ->setParameter('name', $name)
+                ->getQuery()
+                ->getSingleScalarResult();
+
+            return (int) $id;
+        } catch (NonUniqueResultException $e) {
+            throw new RuntimeException(sprintf('Too many images with the name "%s" found.', $name), 0, $e);
+        }
     }
 }
