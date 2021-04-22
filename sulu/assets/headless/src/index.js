@@ -1,6 +1,7 @@
 import { startApp } from 'sulu-headless-bundle';
 import interceptAnchorClick from 'sulu-headless-bundle/src/utils/interceptAnchorClick';
 import viewRegistry from 'sulu-headless-bundle/src/registries/viewRegistry';
+import App from './components/App';
 import HomepageTemplatePage from './views/HomepageTemplatePage';
 import DefaultTemplatePage from './views/DefaultTemplatePage';
 import ProductPresentationTemplatePage from './views/ProductPresentationTemplatePage';
@@ -19,7 +20,7 @@ viewRegistry.add('page', 'productPresentation', ProductPresentationTemplatePage)
 // viewRegistry.add('article', 'headless-template', HeadlessTemplateArticle);
 
 // start react application in specific DOM element
-startApp(document.getElementById('sulu-headless-container'));
+startApp(document.getElementById('sulu-headless-container'), App);
 
 const navigationLinks = document.querySelectorAll('nav a');
 navigationLinks.forEach((navigationLink) => {
