@@ -27,6 +27,9 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <div id="cart-button"></div>
+
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -95,6 +98,10 @@
     </footer>
 
     {% block javascripts %}
+        <script>
+            window.SYLIUS_ENDPOINT = 'https://sylius.phpugmrn.wip';
+        </script>
+
         {# start single page application by including built javascript code #}
         <script src="/build/headless/js/index.js"></script>
     {% endblock %}

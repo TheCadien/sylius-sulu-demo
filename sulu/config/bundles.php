@@ -44,4 +44,5 @@ return [
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Sulu\Bundle\HeadlessBundle\SuluHeadlessBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    Sulu\Bundle\SyliusConsumerBundle\SuluSyliusConsumerBundle::class => ['all' => true],
 ];
