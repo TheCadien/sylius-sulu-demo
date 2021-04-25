@@ -15,7 +15,7 @@ export default () => {
 
     return (
         <>
-            <button className="btn btn-link" onClick={() => setCartOpen(true)}>
+            <button className="btn text-dark btn-link p-0" onClick={() => setCartOpen(true)}>
                 Cart with {itemsQuantity} Items
             </button>
 
