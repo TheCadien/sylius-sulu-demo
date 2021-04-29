@@ -39,6 +39,10 @@ class ProductContentTypeResolver implements ContentTypeResolverInterface
         /** @var Product $product */
         foreach ($data as $productId) {
             $product = $this->productRepository->findById($productId);
+            if (!$product) {
+                continue;
+            }
+
             $content[] = [
                 'name' => $product->getName(),
                 'code' => $product->getCode(),

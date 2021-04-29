@@ -42,7 +42,7 @@ class ProductRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function findById(int $id): Product
+    public function findById(int $id): ?Product
     {
         return $this->findOneBy(['id' => $id]);
     }
