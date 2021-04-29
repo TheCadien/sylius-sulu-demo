@@ -16,7 +16,8 @@ const patchOptions = {
 
 class ShopRequester {
     getUrl(url) {
-        return window.SYLIUS_ENDPOINT + url;
+        // TODO use environment variable and pass it via base.html.twig to react app
+        return 'https://sylius.phpugmrn.wip' + url;
     }
 
     get(url) {

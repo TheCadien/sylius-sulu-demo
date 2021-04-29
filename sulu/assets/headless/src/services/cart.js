@@ -13,10 +13,15 @@ const addItemToCart = (cart, code, variantCode, quantity) => {
 };
 
 const loadProduct = (code) => {
-    shopRequester.get('/api/v2/shop/products/' + code).then((data) => {
-        return shopRequester.get(data.variants[0])
+    return shopRequester.get('/api/v2/shop/products/' + code).then((data) => {
+        return shopRequester.get(data.variants[0]).then((variant) => {
+            data.firstVariant = variant;
+
+            return data;
+        });
     });
 };
+
 export {
     createCart,
     addItemToCart,

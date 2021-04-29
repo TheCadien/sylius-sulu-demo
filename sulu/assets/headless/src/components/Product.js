@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import CartContext from '../contexts/CartContext';
 
 export default ({
+    code,
     image,
     name,
     description,
