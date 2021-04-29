@@ -95,6 +95,10 @@
     </footer>
 
     {% block javascripts %}
+        <script>
+            window.SYLIUS_ENDPOINT = 'https://sylius.phpugmrn.wip';
+        </script>
+
         {# start single page application by including built javascript code #}
         <script src="/build/headless/js/index.js"></script>
     {% endblock %}

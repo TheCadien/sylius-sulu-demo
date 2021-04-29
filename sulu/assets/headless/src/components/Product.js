@@ -1,5 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import CartContext from '../contexts/CartContext';
+import {addItemToCart, loadProduct} from '../services/cart';
 
 export default ({
     code,
@@ -9,6 +10,14 @@ export default ({
     price,
 }) => {
     const [cart, setCart] = useContext(CartContext);
+
+    const [product, setProduct] = useState();
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        loadProduct(code)
+            .then(setProduct)
+            .then(() => setLoading(false));
+    }, []);
 
     return (
         <div className="col-lg-4 col-md-6 mb-4">
@@ -26,7 +35,7 @@ export default ({
                     <button
                         disabled={!cart || loading}
                         className="btn btn-primary"
-                        onClick={() => null}
+                        onClick={() => addItemToCart(cart, product.code, product.firstVariant.code, 1).then(setCart)}
                     >
                         Put into cart
                     </button>
