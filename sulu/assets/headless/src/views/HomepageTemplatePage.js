@@ -14,11 +14,11 @@ export default ({
 }) => (
     <>
         <Carousel className="slide my-4">
-            {headerImages.map(({id, title, formatUri}) => (
+            {headerImages.map(({id, title, url}) => (
                 <Carousel.Item key={id}>
                     <img
                         className="d-block w-100"
-                        src={formatUri.replace('{format}', '1280x720')}
+                        src={url.replace('{format}', '1280x720')}
                         alt={title}
                     />
                     <Carousel.Caption>
