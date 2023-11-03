@@ -6,11 +6,11 @@
     <key>homepage</key>
 
     <view>base</view>
-    <controller>Sulu\Bundle\HeadlessBundle\Controller\HeadlessWebsiteController::indexAction</controller>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
     <cacheLifetime>86400</cacheLifetime>
 
     <meta>
-        <title lang="en">Homepage</title>
+        <title lang="en">Homepage</title>   
         <title lang="de">Startseite</title>
     </meta>
 

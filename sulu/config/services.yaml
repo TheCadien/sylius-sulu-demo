@@ -36,8 +36,3 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Content\ProductSelectionContentType:
         tags: [{name: 'sulu.content.type', alias: 'product_selection'}]
-
-    App\Content\ContentTypeResolver\ProductContentTypeResolver:
-        arguments:
-            - '@App\Repository\ProductRepository'
-        tags: [ { name: 'sulu_headless.content_type_resolver'} ]
