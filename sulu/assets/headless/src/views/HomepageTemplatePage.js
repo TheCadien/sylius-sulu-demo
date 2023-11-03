@@ -3,22 +3,22 @@ import Carousel from 'react-bootstrap/Carousel';
 import Product from '../components/Product';
 
 export default ({
-    data: {
-        content: {
-            headerImages,
-            title,
-            text,
-            products,
-        },
-    },
-}) => (
+                    data: {
+                        content: {
+                            headerImages,
+                            title,
+                            text,
+                            products,
+                        },
+                    },
+                }) => (
     <>
         <Carousel className="slide my-4">
             {headerImages.map(({id, title, url}) => (
                 <Carousel.Item key={id}>
                     <img
                         className="d-block w-100"
-                        src={url.replace('{format}', '1280x720')}
+                        src={url.replace('{format}', '1280x720').replace('{extension}', 'png')}
                         alt={title}
                     />
                     <Carousel.Caption>
